@@ -55,5 +55,8 @@ public class BookstoreApplication
             SpringApplication.run(BookstoreApplication.class,
                                   args);
         }
+        else {
+            System.out.println("Check to see if you have both environment variables in Application!");
+        }
     }
 }
