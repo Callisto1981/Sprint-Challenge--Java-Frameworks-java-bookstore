@@ -60,13 +60,7 @@ public class OpenController
     @PostMapping(value = "/createnewuser",
             consumes = {"application/json"},
             produces = {"application/json"})
-    public ResponseEntity<?> addSelf(
-            HttpServletRequest httpServletRequest,
-            @Valid
-            @RequestBody
-                    UserMinimum newminuser)
-            throws
-            URISyntaxException
+    public ResponseEntity<?> addSelf(HttpServletRequest httpServletRequest, @Valid @RequestBody UserMinimum newminuser) throws URISyntaxException
     {
         // Create the user
         User newuser = new User();
@@ -123,7 +117,7 @@ public class OpenController
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map,
                                                                              headers);
-
+        RestTemplate restTemplate = new RestTemplate();
         String theToken = restTemplate.postForObject(requestURI,
                                                      request,
                                                      String.class);

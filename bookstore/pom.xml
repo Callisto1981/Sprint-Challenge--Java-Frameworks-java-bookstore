@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lambdaschool</groupId>
-    <artifactId>bookstore</artifactId>
+    <artifactId>usermodel</artifactId> <!--changed from bookstore-->
     <version>0.0.1-SNAPSHOT</version>
-    <name>bookstore</name>
-    <description>Bookstore project for Spring Boot</description>
+    <name>usermodel</name> <!--changed from bookstore -->
+    <description>Demo project fro Spring Book</description> <!-- Bookstore project for Spring Boot -->
 
     <properties>
         <java.version>14</java.version>
@@ -41,11 +41,20 @@
             <artifactId>h2</artifactId>
             <!--            <scope>runtime</scope>-->
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
         <!-- Swagger Dependencies Start -->
@@ -88,6 +97,14 @@
             <version>2.3.6.RELEASE</version>
         </dependency>
         <!-- Security Dependencies End -->
+
+        <!-- spring mock mvc -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>3.3.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
