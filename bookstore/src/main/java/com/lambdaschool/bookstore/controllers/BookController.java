@@ -30,31 +30,24 @@ public class BookController
     BookService bookService;
 
     // http://localhost:2019/books/books
-    @GetMapping(value = "/books",
-            produces = {"application/json"})
+    @GetMapping(value = "/books", produces = {"application/json"})
     public ResponseEntity<?> listAllBooks(HttpServletRequest request)
     {
         List<Book> myBooks = bookService.findAll();
-        return new ResponseEntity<>(myBooks,
-                                    HttpStatus.OK);
+        return new ResponseEntity<>(myBooks, HttpStatus.OK);
     }
 
     // http://localhost:2019/books/book/{bookId}
-    @GetMapping(value = "/book/{bookId}",
-            produces = {"application/json"})
-    public ResponseEntity<?> getBookById(HttpServletRequest request,
-                                         @PathVariable
-                                                 Long bookId)
+    @GetMapping(value = "/book/{bookId}", produces = {"application/json"})
+    public ResponseEntity<?> getBookById(HttpServletRequest request, @PathVariable Long bookId)
     {
         Book s = bookService.findBookById(bookId);
-        return new ResponseEntity<>(s,
-                                    HttpStatus.OK);
+        return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
     // POST http://localhost:2019/books/book
     @PostMapping(value = "/book", consumes = "application/json")
-    public ResponseEntity<?> addNewBook(@Valid @RequestBody Book newBook) throws
-            URISyntaxException
+    public ResponseEntity<?> addNewBook(@Valid @RequestBody Book newBook) throws URISyntaxException
     {
         newBook.setBookid(0);
         newBook = bookService.save(newBook);
@@ -73,14 +66,8 @@ public class BookController
     }
 
     // PUT http://localhost:2019/books/book/1
-    @PutMapping(value = "/book/{bookid}",
-            consumes = "application/json")
-    public ResponseEntity<?> updateFullBook(
-            @Valid
-            @RequestBody
-                    Book updateBook,
-            @PathVariable
-                    long bookid)
+    @PutMapping(value = "/book/{bookid}", consumes = "application/json")
+    public ResponseEntity<?> updateFullBook(@Valid @RequestBody Book updateBook, @PathVariable long bookid)
     {
         updateBook.setBookid(bookid);
         bookService.save(updateBook);
@@ -90,9 +77,7 @@ public class BookController
 
     // DELETE http://localhost:2019/books/book/1
     @DeleteMapping(value = "/book/{id}")
-    public ResponseEntity<?> deleteBookById(
-            @PathVariable
-                    long id)
+    public ResponseEntity<?> deleteBookById(@PathVariable long id)
     {
         bookService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
